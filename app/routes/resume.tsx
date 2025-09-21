@@ -93,7 +93,15 @@ const Resume = () => {
                 </section>
                 <section className="feedback-section">
                     <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-4xl !text-black font-bold">Resume Review for {resumeData.jobTitle} at {resumeData.companyName}</h2>
+                        {resumeData ? (
+                            <div>
+                                <h2 className="text-4xl !text-black font-bold">Resume Review for {resumeData.jobTitle} at {resumeData.companyName}</h2>
+                            </div>
+                        ) : (
+                            <div>
+                                <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
+                            </div>
+                        )}
 
                         {!isAuthenticated && (
                             <div className="text-right">
