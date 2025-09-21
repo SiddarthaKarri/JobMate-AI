@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
 import Navbar from "~/components/Navbar";
+import Footer from "~/components/Footer";
 import ResumeCard from "~/components/ResumeCard";
 import {Link} from "react-router";
 import {useEffect, useState} from "react";
@@ -63,5 +64,7 @@ export default function Home() {
           </div>
       )}
     </section>
+    
+    <Footer />
   </main>
 }

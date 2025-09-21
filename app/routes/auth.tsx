@@ -1,6 +1,7 @@
 import { useAuthStore } from "~/lib/auth";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
+import Footer from "~/components/Footer";
 import HumanCaptcha from "~/components/HumanCaptcha";
 import { CAPTCHA_IMAGE_SETS } from "~/lib/captcha";
 
@@ -115,6 +116,8 @@ const Auth = () => {
                     </div>
                 </section>
             </div>
+            
+            <Footer />
         </main>
     )
 }

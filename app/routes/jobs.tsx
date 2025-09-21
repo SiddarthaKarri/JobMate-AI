@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Route } from "./+types/jobs";
 import Navbar from "~/components/Navbar";
+import Footer from "~/components/Footer";
 import JobCard from "~/components/JobCard";
 import JobForm from "~/components/JobForm";
 import { useJobStore } from "~/lib/jobStore";
@@ -216,6 +217,8 @@ export default function Jobs() {
                     </div>
                 )}
             </section>
+            
+            <Footer />
         </main>
     );
 }

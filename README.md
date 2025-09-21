@@ -1,269 +1,166 @@
-# AI Analyzer - Resume & Job Application Management System
+# 🚀 JobMate AI
 
-**An intelligent resume analysis and job application tracking platform powered by AI**
+<div align="center">
 
-Built with React, TypeScript, and modern web technologies to help job seekers optimize their resumes and manage their application process efficiently.
+![JobMate AI](/assets/JobMateLogo.jpg)
 
-## 💡 Project Motivation
+**AI-powered resume analysis and job application tracker**
 
-As a developer, I noticed the challenges job seekers face in optimizing their resumes for different positions and keeping track of multiple applications. This project combines AI-powered resume analysis with comprehensive job application management to create a complete job search toolkit.
+[![GitHub Stars](https://img.shields.io/github/stars/SiddarthaKarri/JobMate-AI?style=for-the-badge&logo=github)](https://github.com/SiddarthaKarri/JobMate-AI)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Latest-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![OpenRouter](https://img.shields.io/badge/OpenRouter-Grok--4--Fast-FF6B6B?style=for-the-badge)](https://openrouter.ai/)
 
-The application leverages modern web technologies and AI to provide actionable insights while maintaining a clean, user-friendly interface that makes job searching more organized and effective.
+[🚀 Live Demo](https://jobmate-ai.vercel.app) • [🐛 Report Bug](https://github.com/SiddarthaKarri/JobMate-AI/issues)
 
-## 📋 Table of Contents
+</div>
 
-- [✨ Features](#-features)
-- [🚀 Demo](#-demo)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [📦 Installation](#-installation)
-- [🔧 Configuration](#-configuration)
-- [💻 Usage](#-usage)
-- [📱 Screenshots](#-screenshots)
-- [🏗️ Project Structure](#️-project-structure)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [👨‍💻 Author](#-author)
+---
 
 ## ✨ Features
 
-### 🎯 Resume Analysis
-- **AI-Powered Feedback**: Get intelligent insights on your resume using advanced AI models
-- **ATS Score**: Receive an Applicant Tracking System compatibility score
-- **Multi-Category Analysis**: Detailed feedback on content, structure, tone, style, and skills
-- **Visual Scoring**: Interactive score gauges and badges for easy understanding
-- **PDF Processing**: Upload and analyze PDF resumes with automatic text extraction
+### 🎯 **AI-Powered Resume Analysis**
+- **Smart Feedback**: Comprehensive analysis using OpenRouter's Grok-4-Fast model
+- **Multi-Category Scoring**: ATS compatibility, content quality, structure, tone, and skills
+- **Visual Insights**: Interactive gauges and actionable improvement suggestions
+- **PDF Processing**: Seamless upload with text extraction and image preview
 
-### 💼 Job Application Management
-- **Application Tracking**: Keep track of all your job applications in one place
-- **Status Management**: Update application status (Applied, Interviewing, Rejected, Accepted)
-- **Detailed Records**: Store job title, company, location, application date, and job descriptions
-- **Smart Dashboard**: Visual statistics showing your application progress
-- **CRUD Operations**: Full create, read, update, and delete functionality
-- **Sorting & Filtering**: Sort applications by date or status
+### 💼 **Job Application Management**
+- **Complete Tracking**: Centralized dashboard for all applications
+- **Status Management**: Track Applied → Interviewing → Accepted/Rejected
+- **Rich Records**: Store job descriptions, company info, and personal notes
+- **Smart Analytics**: Visual statistics and progress insights
 
-### 🔐 Authentication & Storage
-- **Secure Authentication**: Browser-based authentication using Puter.js
-- **Cloud Storage**: All data stored securely in the cloud
-- **User-Specific Data**: Each user's resumes and job applications are private
-- **Real-time Sync**: Data syncs across devices automatically
+### 🔐 **Security & Storage**
+- **Privacy-First**: All data stored locally in your browser
+- **Secure Authentication**: Browser-based session management
+- **Full Control**: Export data or wipe completely anytime
 
-### 🎨 User Experience
-- **Modern UI/UX**: Clean, responsive design built with Tailwind CSS
-- **Mobile Responsive**: Works seamlessly on desktop, tablet, and mobile devices
-- **Loading States**: Smooth loading animations and feedback
-- **Error Handling**: Comprehensive error handling with user-friendly messages
-- **Accessibility**: Built with accessibility best practices
-
-## 🚀 Live Demo
-
-**🔗 [Try AI Analyzer Live](https://ai-job-analyzer-mu.vercel.app/)**
-
-### Quick Start
-1. Visit the live application
-2. Sign in with Puter authentication
-3. Upload a resume to get AI-powered feedback
-4. Add job applications to track your progress
+---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **[React 19](https://react.dev/)** - Modern React with latest features
-- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
-- **[React Router v7](https://reactrouter.com/)** - Advanced routing with SSR support
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Zustand](https://github.com/pmndrs/zustand)** - Lightweight state management
+| Frontend | AI & Processing | Tools |
+|----------|-----------------|-------|
+| React 19 + TypeScript | OpenRouter (Grok-4-Fast) | Vite |
+| React Router v7 | PDF.js | ESLint |
+| Tailwind CSS | Custom PDF-to-Image | TypeScript |
+| Zustand | LocalStorage API | Modern ES Modules |
 
-### Backend & Services
-- **[Puter.js](https://puter.com/)** - Serverless backend with AI, storage, and authentication
-- **PDF Processing** - Built-in PDF text extraction and analysis capabilities
+---
 
-### Development & Deployment
-- **[Vite](https://vite.dev/)** - Fast build tool and development server
-- **[Vercel](https://vercel.com/)** - Deployment and hosting platform
-- **TypeScript** - Enhanced development experience with type safety
-
-## 📦 Installation
+## 🚀 Quick Start
 
 ### Prerequisites
-- **Node.js** (v18 or higher)
-- **npm** or **yarn**
-- **Git**
+- Node.js (v18+)
+- OpenRouter API Key ([Get here](https://openrouter.ai/))
 
-### Clone the Repository
+### Installation
 ```bash
-git clone https://github.com/Anurag03singh/Ai-Job-Analyzer.git
-cd Ai-Job-Analyzer
-```
-
-### Install Dependencies
-```bash
+# Clone and install
+git clone https://github.com/SiddarthaKarri/JobMate-AI.git
+cd JobMate-AI
 npm install
-# or
-yarn install
-```
 
-### Start Development Server
-```bash
+# Environment setup
+cp .env.example .env
+# Add your API key: VITE_OPENROUTER_API_KEY=your_key_here
+
+# Start development
 npm run dev
-# or
-yarn dev
 ```
 
-The application will be available at `http://localhost:5173`
+Visit `http://localhost:5173` and you're ready to go! 🎉
 
-## 🔧 Configuration
-
-### Environment Setup
-The application uses Puter.js for backend services, which requires no additional configuration for basic usage. However, you can customize:
-
-1. **Puter.js Settings**: Modify `app/lib/puter.ts` for custom configurations
-2. **Styling**: Update `app/app.css` and Tailwind config for custom themes
-3. **AI Models**: Configure AI model preferences in the Puter store
-
-### Build for Production
-```bash
-npm run build
-# or
-yarn build
-```
-
-### Type Checking
-```bash
-npm run typecheck
-# or
-yarn typecheck
-```
+---
 
 ## 💻 Usage
 
-### 1. Authentication
-- Click "Sign In" to authenticate with Puter
-- No registration required - uses secure browser-based auth
+1. **Sign In** → Access all features securely
+2. **Upload Resume** → Get AI-powered analysis and scoring
+3. **Track Applications** → Manage your job search pipeline
+4. **Monitor Progress** → View analytics and insights
 
-### 2. Resume Analysis
-- Navigate to "Upload Resume"
-- Fill in job details (company, position, job description)
-- Upload your PDF resume
-- Get instant AI-powered feedback with scores and suggestions
-
-### 3. Job Application Management
-- Go to the "Jobs" section
-- Click "Add New Job" to track a new application
-- Fill in job details and current status
-- Edit or delete applications as needed
-- View your application statistics on the dashboard
-
-### 4. Data Management
-- All data is automatically saved to the cloud
-- Access your data from any device after signing in
-- Use the "Wipe" feature to clear all data if needed
-
-## 📱 Application Features
-
-### Resume Analysis Dashboard
-- Upload PDF resumes and get instant AI feedback
-- View detailed scores for ATS compatibility, content quality, and structure
-- Get actionable suggestions for improvement
-
-### Job Application Tracker
-- Comprehensive dashboard showing application statistics
-- Track applications across different stages (Applied, Interviewing, Rejected, Accepted)
-- Manage job details including company, position, location, and descriptions
-
-### User Interface
-- Clean, modern design optimized for productivity
-- Responsive layout that works on all devices
-- Intuitive navigation and user-friendly forms
+---
 
 ## 🏗️ Project Structure
 
 ```
-ai-job-analyzer/
+JobMate-AI/
 ├── app/
-│   ├── components/          # Reusable UI components
-│   │   ├── JobCard.tsx     # Job application card
-│   │   ├── JobForm.tsx     # Job application form
-│   │   ├── Navbar.tsx      # Navigation component
-│   │   └── ...
-│   ├── lib/                # Utility libraries
-│   │   ├── jobStore.ts     # Job management state
-│   │   ├── puter.ts        # Puter.js integration
-│   │   └── utils.ts        # Helper functions
-│   ├── routes/             # Page components
-│   │   ├── home.tsx        # Dashboard page
-│   │   ├── jobs.tsx        # Job management page
-│   │   ├── upload.tsx      # Resume upload page
-│   │   └── ...
-│   ├── app.css            # Global styles
-│   └── root.tsx           # App root component
+│   ├── components/         # Reusable UI components
+│   ├── lib/               # Core utilities (auth, AI, storage)
+│   ├── routes/            # Page components (SSR)
+│   └── root.tsx           # App root
 ├── types/                 # TypeScript definitions
-├── public/               # Static assets
-├── constants/            # App constants
-└── package.json         # Dependencies and scripts
+└── public/               # Static assets
 ```
 
-### Key Components
+---
 
-#### Job Management
-- **JobStore** (`app/lib/jobStore.ts`): Zustand store for job application state
-- **JobCard** (`app/components/JobCard.tsx`): Individual job application display
-- **JobForm** (`app/components/JobForm.tsx`): Add/edit job application form
+## 🚀 Deployment
 
-#### Resume Analysis
-- **FileUploader** (`app/components/FileUploader.tsx`): PDF upload component
-- **ATS** (`app/components/ATS.tsx`): ATS score display
-- **ScoreGauge** (`app/components/ScoreGauge.tsx`): Visual score representation
+### Vercel (Recommended)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/SiddarthaKarri/JobMate-AI)
+
+```bash
+# One-click deployment or:
+npm run build
+vercel
+
+# Don't forget to add VITE_OPENROUTER_API_KEY in Vercel dashboard
+```
+
+### Other Platforms
+- **Netlify**: Drag & drop the `build` folder
+- **Railway**: Connect GitHub repository
+- **Render**: Use build command `npm run build`
+
+---
 
 ## 🤝 Contributing
 
-We welcome contributions! Here's how you can help:
+We welcome contributions! 
 
-### Development Setup
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Run tests: `npm run typecheck`
-5. Commit changes: `git commit -m 'Add amazing feature'`
-6. Push to branch: `git push origin feature/amazing-feature`
-7. Open a Pull Request
+2. Create feature branch: `git checkout -b feature/amazing-feature`
+3. Make changes and test thoroughly
+4. Submit a pull request
 
-### Contribution Guidelines
-- Follow TypeScript best practices
-- Maintain consistent code style
-- Add comments for complex logic
-- Update documentation for new features
-- Test your changes thoroughly
+See our [Contributing Guide](CONTRIBUTING.md) for detailed guidelines.
 
-### Issues
-- 🐛 **Bug Reports**: Use the bug report template
-- 💡 **Feature Requests**: Use the feature request template
-- 📚 **Documentation**: Help improve our docs
+---
+
+## 🔮 Roadmap
+
+- [ ] **Resume Templates** - Industry-specific templates
+- [ ] **Interview Prep** - AI-generated practice questions
+- [ ] **Email Integration** - Automated follow-up reminders
+- [ ] **Advanced Analytics** - Success rate insights
+- [ ] **Mobile App** - Native iOS/Android apps
+
+---
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+---
+
 ## 👨‍💻 Author
 
-**Anurag Singh**
-- GitHub: [@Anurag03singh](https://github.com/Anurag03singh)
-- Portfolio: [AI Analyzer](https://ai-job-analyzer-mu.vercel.app/)
-- Project Repository: [Ai-Job-Analyzer](https://github.com/Anurag03singh/Ai-Job-Analyzer)
+**Siddartha Karri**
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/SiddarthaKarri)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/siddarthakarri)
+[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white)](https://siddarthakarri.github.io/portfolio/)
 
 ---
+
+<div align="center">
 
 **⭐ Star this repository if you found it helpful!**
 
-**🔗 [Live Application](https://ai-job-analyzer-mu.vercel.app/) | [GitHub Repository](https://github.com/Anurag03singh/Ai-Job-Analyzer)**
+*Built with ❤️ using React Router v7, TypeScript, and OpenRouter AI*
 
-## 🔮 Future Enhancements
-
-- **Resume Templates**: Pre-built resume templates for different industries
-- **Interview Preparation**: AI-generated interview questions based on job descriptions
-- **Application Reminders**: Automated follow-up reminders for pending applications
-- **Analytics Dashboard**: Advanced insights into application success rates
-- **Resume Comparison**: Side-by-side comparison of multiple resume versions
-
----
-
-*Built with ❤️ by [Anurag Singh](https://github.com/Anurag03singh)*
+</div>

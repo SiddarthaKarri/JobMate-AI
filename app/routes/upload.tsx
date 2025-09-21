@@ -1,5 +1,6 @@
 import {type FormEvent, useState} from 'react'
 import Navbar from "~/components/Navbar";
+import Footer from "~/components/Footer";
 import FileUploader from "~/components/FileUploader";
 import {OpenRouterService} from "~/lib/openrouter";
 import {AI_CONFIG} from "~/lib/config";
@@ -144,6 +145,8 @@ const Upload = () => {
                     )}
                 </div>
             </section>
+            
+            <Footer />
         </main>
     )
 }
