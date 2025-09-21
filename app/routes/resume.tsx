@@ -93,7 +93,8 @@ const Resume = () => {
                 </section>
                 <section className="feedback-section">
                     <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
+                        <h2 className="text-4xl !text-black font-bold">Resume Review for {resumeData.jobTitle} at {resumeData.companyName}</h2>
+
                         {!isAuthenticated && (
                             <div className="text-right">
                                 <p className="text-sm text-gray-600">Want detailed insights?</p>
@@ -106,15 +107,6 @@ const Resume = () => {
                             </div>
                         )}
                     </div>
-                    
-                    {resumeData && (
-                        <div className="mb-4 p-4 bg-gray-100 rounded">
-                            <h3 className="font-semibold">Application Details:</h3>
-                            <p><strong>Company:</strong> {resumeData.companyName}</p>
-                            <p><strong>Position:</strong> {resumeData.jobTitle}</p>
-                            <p><strong>Description:</strong> {resumeData.jobDescription}</p>
-                        </div>
-                    )}
                     
                     {feedback ? (
                         <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
