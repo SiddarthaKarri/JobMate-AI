@@ -1,0 +1,127 @@
+import { useState } from "react";
+
+interface JobCardProps {
+    job: JobApplication;
+    onEdit: (job: JobApplication) => void;
+    onDelete: (id: string) => void;
+}
+
+const JobCard = ({ job, onEdit, onDelete }: JobCardProps) => {
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+    const getStatusBadgeClass = (status: JobApplication["status"]) => {
+        switch (status) {
+            case "Applied":
+                return "bg-blue-100 text-blue-800";
+            case "Interviewing":
+                return "bg-badge-yellow text-badge-yellow-text";
+            case "Accepted":
+                return "bg-badge-green text-badge-green-text";
+            case "Rejected":
+                return "bg-badge-red text-badge-red-text";
+            default:
+                return "bg-gray-100 text-gray-800";
+        }
+    };
+
+    const formatDate = (dateString: string) => {
+        return new Date(dateString).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    };
+
+    const getRelativeTime = (dateString: string) => {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffTime = now.getTime() - date.getTime();
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        
+        if (diffDays === 0) return 'Today';
+        if (diffDays === 1) return 'Yesterday';
+        if (diffDays < 7) return `${diffDays} days ago`;
+        if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+        if (diffDays < 365) return `${Math.floor(diffDays / 30)} months ago`;
+        return `${Math.floor(diffDays / 365)} years ago`;
+    };
+
+    const handleDelete = () => {
+        onDelete(job.id);
+        setShowDeleteConfirm(false);
+    };
+
+    return (
+        <div className="resume-card">
+            <div className="resume-card-header">
+                <div className="flex flex-col gap-2 flex-1">
+                    <h3 className="text-xl font-semibold text-black">{job.jobTitle}</h3>
+                    <p className="text-dark-200 font-medium">{job.company}</p>
+                    <p className="text-sm text-dark-200">{job.location}</p>
+                </div>
+                <div className="flex flex-col items-end gap-2">
+                    <span className={`score-badge ${getStatusBadgeClass(job.status)}`}>
+                        {job.status}
+                    </span>
+                    <p className="text-sm text-dark-200" title={formatDate(job.dateApplied)}>
+                        Applied: {getRelativeTime(job.dateApplied)}
+                    </p>
+                </div>
+            </div>
+
+            <div className="flex-1">
+                <h4 className="font-medium text-dark-200 mb-2">Job Description</h4>
+                <div className="bg-gray-50 rounded-lg p-3 max-h-32 overflow-y-auto">
+                    <p className="text-sm text-dark-200 line-clamp-6">
+                        {job.jobDescription.length > 200 
+                            ? `${job.jobDescription.substring(0, 200)}...` 
+                            : job.jobDescription
+                        }
+                    </p>
+                </div>
+            </div>
+
+            <div className="flex gap-2 pt-4">
+                <button
+                    onClick={() => onEdit(job)}
+                    className="flex-1 border border-gray-300 rounded-full px-4 py-2 hover:bg-gray-50 transition-colors text-sm font-medium"
+                >
+                    Edit
+                </button>
+                <button
+                    onClick={() => setShowDeleteConfirm(true)}
+                    className="flex-1 border border-red-300 text-red-600 rounded-full px-4 py-2 hover:bg-red-50 transition-colors text-sm font-medium"
+                >
+                    Delete
+                </button>
+            </div>
+
+            {showDeleteConfirm && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="bg-white rounded-2xl p-6 max-w-md mx-4">
+                        <h3 className="text-lg font-semibold mb-4">Delete Job Application</h3>
+                        <p className="text-dark-200 mb-6">
+                            Are you sure you want to delete the application for <strong>{job.jobTitle}</strong> at <strong>{job.company}</strong>? This action cannot be undone.
+                        </p>
+                        <div className="flex gap-3">
+                            <button
+                                onClick={handleDelete}
+                                className="flex-1 bg-red-600 text-white rounded-full px-4 py-2 hover:bg-red-700 transition-colors"
+                            >
+                                Delete
+                            </button>
+                            <button
+                                onClick={() => setShowDeleteConfirm(false)}
+                                className="flex-1 border border-gray-300 rounded-full px-4 py-2 hover:bg-gray-50 transition-colors"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default JobCard;
