@@ -11,7 +11,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-Latest-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![OpenRouter](https://img.shields.io/badge/OpenRouter-Grok--4--Fast-FF6B6B?style=for-the-badge)](https://openrouter.ai/)
 
-[🚀 Live Demo](https://jobmate-ai.vercel.app) • [🐛 Report Bug](https://github.com/SiddarthaKarri/JobMate-AI/issues)
+[🚀 Live Demo](https://job-mateai.vercel.app) • [🐛 Report Bug](https://github.com/SiddarthaKarri/JobMate-AI/issues)
 
 </div>
 
