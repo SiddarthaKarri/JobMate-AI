@@ -1,4 +1,17 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "build/client"
+  "functions": {
+    "build/server/index.js": {
+      "runtime": "@vercel/node@3.0.7"
+    }
+  },
+  "routes": [
+    {
+      "src": "/build/client/(.*)",
+      "dest": "/build/client/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/build/server/index.js"
+    }
+  ]
 }
