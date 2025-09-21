@@ -5,8 +5,8 @@ import HumanCaptcha from "~/components/HumanCaptcha";
 import { CAPTCHA_IMAGE_SETS } from "~/lib/captcha";
 
 export const meta = () => ([
-    { title: 'AI Analyzer | Auth' },
-    { name: 'description', content: 'Log into your account' },
+    { title: 'JobMate AI | Auth' },
+    { name: 'description', content: 'Sign in to access detailed resume insights' },
 ])
 
 const Auth = () => {

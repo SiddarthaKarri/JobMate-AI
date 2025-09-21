@@ -1,19 +1,17 @@
 import type { Route } from "./+types/home";
 import Navbar from "~/components/Navbar";
 import ResumeCard from "~/components/ResumeCard";
-import {usePuterStore} from "~/lib/puterAI";
 import {Link} from "react-router";
 import {useEffect, useState} from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "AI Analyzer" },
+    { title: "JobMate AI" },
     { name: "description", content: "Smart feedback for your dream job!" },
   ];
 }
 
 export default function Home() {
-  const { kv } = usePuterStore();
   const [resumes, setResumes] = useState<Resume[]>([]);
   const [loadingResumes, setLoadingResumes] = useState(false);
 
@@ -21,13 +19,10 @@ export default function Home() {
     const loadResumes = async () => {
       setLoadingResumes(true);
 
-      const resumes = (await kv.list('resume:*', true)) as KVItem[];
+      // Load from localStorage
+      const resumes = JSON.parse(localStorage.getItem('resumes') || '[]') as Resume[];
 
-      const parsedResumes = resumes?.map((resume) => (
-          JSON.parse(resume.value) as Resume
-      ))
-
-      setResumes(parsedResumes || []);
+      setResumes(resumes || []);
       setLoadingResumes(false);
     }
 

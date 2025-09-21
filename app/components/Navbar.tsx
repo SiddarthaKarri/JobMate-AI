@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <Link to="/">
-                <p className="text-2xl font-bold text-gradient">AI ANALYZER</p>
+                <p className="text-2xl font-bold text-gradient">JobMate AI</p>
             </Link>
             <div className="flex gap-4 items-center">
                 <Link to="/jobs" className="flex items-center px-4 py-2 text-dark-200 hover:text-black transition-colors">

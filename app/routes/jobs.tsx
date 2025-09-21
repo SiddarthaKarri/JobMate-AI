@@ -7,8 +7,8 @@ import { useJobStore } from "~/lib/jobStore";
 
 export function meta({}: Route.MetaArgs) {
     return [
-        { title: "Jobs - AI Analyzer" },
-        { name: "description", content: "Manage your job applications" },
+        { title: "Jobs - JobMate AI" },
+        { name: "description", content: "Track and manage your job applications" },
     ];
 }
 
@@ -43,6 +43,13 @@ export default function Jobs() {
 
     const handleDeleteJob = async (id: string) => {
         await deleteJob(id);
+    };
+
+    const handleStatusUpdate = async (id: string, status: JobApplication['status']) => {
+        const job = jobs.find(j => j.id === id);
+        if (job) {
+            await updateJob(id, { ...job, status });
+        }
     };
 
     const handleCancelForm = () => {
@@ -189,6 +196,7 @@ export default function Jobs() {
                                         job={job}
                                         onEdit={handleEditJob}
                                         onDelete={handleDeleteJob}
+                                        onStatusUpdate={handleStatusUpdate}
                                     />
                                 ))}
                             </div>

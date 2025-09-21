@@ -1,13 +1,32 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface JobCardProps {
     job: JobApplication;
     onEdit: (job: JobApplication) => void;
     onDelete: (id: string) => void;
+    onStatusUpdate?: (jobId: string, newStatus: JobApplication["status"]) => void;
 }
 
-const JobCard = ({ job, onEdit, onDelete }: JobCardProps) => {
+const JobCard = ({ job, onEdit, onDelete, onStatusUpdate }: JobCardProps) => {
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+    const [showStatusDropdown, setShowStatusDropdown] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setShowStatusDropdown(false);
+            }
+        };
+
+        if (showStatusDropdown) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showStatusDropdown]);
 
     const getStatusBadgeClass = (status: JobApplication["status"]) => {
         switch (status) {
@@ -46,6 +65,13 @@ const JobCard = ({ job, onEdit, onDelete }: JobCardProps) => {
         return `${Math.floor(diffDays / 365)} years ago`;
     };
 
+    const handleStatusChange = (newStatus: JobApplication["status"]) => {
+        if (onStatusUpdate) {
+            onStatusUpdate(job.id, newStatus);
+        }
+        setShowStatusDropdown(false);
+    };
+
     const handleDelete = () => {
         onDelete(job.id);
         setShowDeleteConfirm(false);
@@ -60,9 +86,30 @@ const JobCard = ({ job, onEdit, onDelete }: JobCardProps) => {
                     <p className="text-sm text-dark-200">{job.location}</p>
                 </div>
                 <div className="flex flex-col items-end gap-2">
-                    <span className={`score-badge ${getStatusBadgeClass(job.status)}`}>
-                        {job.status}
-                    </span>
+                    <div className="relative" ref={dropdownRef}>
+                        <button
+                            onClick={() => setShowStatusDropdown(!showStatusDropdown)}
+                            className={`score-badge ${getStatusBadgeClass(job.status)} cursor-pointer hover:opacity-80 transition-opacity`}
+                        >
+                            {job.status} ▼
+                        </button>
+                        
+                        {showStatusDropdown && onStatusUpdate && (
+                            <div className="absolute right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 min-w-[120px]">
+                                {(["Applied", "Interviewing", "Accepted", "Rejected"] as const).map((status) => (
+                                    <button
+                                        key={status}
+                                        onClick={() => handleStatusChange(status)}
+                                        className={`w-full text-left px-3 py-2 hover:bg-gray-50 text-sm ${
+                                            status === job.status ? 'bg-blue-50 font-medium' : ''
+                                        }`}
+                                    >
+                                        {status}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                     <p className="text-sm text-dark-200" title={formatDate(job.dateApplied)}>
                         Applied: {getRelativeTime(job.dateApplied)}
                     </p>
