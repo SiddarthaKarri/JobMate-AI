@@ -75,36 +75,38 @@ const Resume = () => {
                     <span className="text-gray-800 text-sm font-semibold">Back to Homepage</span>
                 </Link>
             </nav>
-            <div className="flex flex-row w-full max-lg:flex-col-reverse">
-                <section className="feedback-section bg-[url('/images/bg-small.svg') bg-cover h-[100vh] sticky top-0 items-center justify-center">
+            <div className="flex flex-col lg:flex-row w-full">
+                <section className="feedback-section bg-[url('/images/bg-small.svg')] bg-cover lg:h-[100vh] lg:sticky lg:top-0 flex items-center justify-center order-2 lg:order-1">
                     {imageUrl && resumeData && (
-                        <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit p-4">
+                        <div className="animate-in fade-in duration-1000 gradient-border max-sm:m-0 h-auto lg:h-[90%] max-w-full lg:max-wxl:h-fit w-fit p-4">
                             <div onClick={handleImageClick} className="cursor-pointer w-full h-full overflow-hidden rounded-2xl">
                                 <img
                                     src={imageUrl}
-                                    className="w-full h-full object-contain hover:opacity-90 transition-opacity"
+                                    className="w-full h-auto lg:h-full object-contain hover:opacity-90 transition-opacity max-w-full"
                                     alt="Resume preview - Click to open PDF"
                                     title="Click to open PDF"
-                                    style={{ maxHeight: '100%', maxWidth: '100%' }}
+                                    style={{ maxHeight: '70vh', maxWidth: '100%' }}
                                 />
                             </div>
                         </div>
                     )}
                 </section>
-                <section className="feedback-section">
-                    <div className="flex items-center justify-between mb-4">
+                <section className="feedback-section order-1 lg:order-2">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 gap-4">
                         {resumeData ? (
                             <div>
-                                <h2 className="text-4xl !text-black font-bold">Resume Review for {resumeData.jobTitle} at {resumeData.companyName}</h2>
+                                <h2 className="text-2xl sm:text-3xl lg:text-4xl !text-black font-bold leading-tight">
+                                    Resume Review for {resumeData.jobTitle} at {resumeData.companyName}
+                                </h2>
                             </div>
                         ) : (
                             <div>
-                                <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
+                                <h2 className="text-2xl sm:text-3xl lg:text-4xl !text-black font-bold">Resume Review</h2>
                             </div>
                         )}
 
                         {!isAuthenticated && (
-                            <div className="text-right">
+                            <div className="text-left lg:text-right">
                                 <p className="text-sm text-gray-600">Want detailed insights?</p>
                                 <Link 
                                     to={`/auth?next=/resume/${id}`}
@@ -117,7 +119,7 @@ const Resume = () => {
                     </div>
                     
                     {feedback ? (
-                        <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
+                        <div className="flex flex-col gap-6 sm:gap-8 animate-in fade-in duration-1000">
                             {isAuthenticated ? (
                                 // Full detailed view for authenticated users
                                 <>

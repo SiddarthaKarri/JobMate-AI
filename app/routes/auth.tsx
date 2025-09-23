@@ -48,77 +48,79 @@ const Auth = () => {
     };
 
     return (
-        <main className="bg-[url('/images/bg-auth.svg')] bg-cover min-h-screen flex items-center justify-center">
-            <div className="gradient-border shadow-lg">
-                <section className="flex flex-col gap-8 bg-white rounded-2xl p-10">
-                    <div className="flex flex-col items-center gap-2 text-center">
-                        <h1>Welcome</h1>
-                        <h2>Log In to Continue Your Job Journey</h2>
-                    </div>
-                    
-                    {error && (
-                        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                            {error}
-                            <button 
-                                onClick={clearError}
-                                className="ml-2 text-red-800 hover:text-red-900"
-                            >
-                                ×
-                            </button>
+        <div className="bg-[url('/images/bg-auth.svg')] bg-cover min-h-screen flex flex-col">
+            <main className="flex-1 flex items-center justify-center p-4">
+                <div className="gradient-border shadow-lg w-full max-w-md">
+                    <section className="flex flex-col gap-8 bg-white rounded-2xl p-10">
+                        <div className="flex flex-col items-center gap-2 text-center">
+                            <h1>Welcome</h1>
+                            <h2>Log In to Continue Your Job Journey</h2>
                         </div>
-                    )}
-
-                    {showCaptcha && !captchaVerified && (
-                        <HumanCaptcha
-                            imageSets={CAPTCHA_IMAGE_SETS}
-                            onSuccess={handleCaptchaSuccess}
-                            onFail={handleCaptchaFail}
-                        />
-                    )}
-
-                    <div>
-                        {isLoading ? (
-                            <button className="auth-button animate-pulse" disabled>
-                                <p>Signing you in...</p>
-                            </button>
-                        ) : (
-                            <>
-                                {isAuthenticated ? (
-                                    <button className="auth-button" onClick={signOut}>
-                                        <p>Log Out</p>
-                                    </button>
-                                ) : (
-                                    <form onSubmit={handleSignIn} className="flex flex-col gap-4">
-                                        <input
-                                            type="text"
-                                            placeholder="Enter username"
-                                            value={username}
-                                            onChange={(e) => setUsername(e.target.value)}
-                                            className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            required
-                                        />
-                                        <button 
-                                            type="submit" 
-                                            className="auth-button"
-                                            disabled={!captchaVerified}
-                                        >
-                                            <p>Log In</p>
-                                        </button>
-                                        {!captchaVerified && (
-                                            <p className="text-sm text-gray-600 text-center">
-                                                Complete the captcha to enable login
-                                            </p>
-                                        )}
-                                    </form>
-                                )}
-                            </>
+                        
+                        {error && (
+                            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                                {error}
+                                <button 
+                                    onClick={clearError}
+                                    className="ml-2 text-red-800 hover:text-red-900"
+                                >
+                                    ×
+                                </button>
+                            </div>
                         )}
-                    </div>
-                </section>
-            </div>
+
+                        {showCaptcha && !captchaVerified && (
+                            <HumanCaptcha
+                                imageSets={CAPTCHA_IMAGE_SETS}
+                                onSuccess={handleCaptchaSuccess}
+                                onFail={handleCaptchaFail}
+                            />
+                        )}
+
+                        <div>
+                            {isLoading ? (
+                                <button className="auth-button animate-pulse" disabled>
+                                    <p>Signing you in...</p>
+                                </button>
+                            ) : (
+                                <>
+                                    {isAuthenticated ? (
+                                        <button className="auth-button" onClick={signOut}>
+                                            <p>Log Out</p>
+                                        </button>
+                                    ) : (
+                                        <form onSubmit={handleSignIn} className="flex flex-col gap-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Enter username"
+                                                value={username}
+                                                onChange={(e) => setUsername(e.target.value)}
+                                                className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                required
+                                            />
+                                            <button 
+                                                type="submit" 
+                                                className="auth-button"
+                                                disabled={!captchaVerified}
+                                            >
+                                                <p>Log In</p>
+                                            </button>
+                                            {!captchaVerified && (
+                                                <p className="text-sm text-gray-600 text-center">
+                                                    Complete the captcha to enable login
+                                                </p>
+                                            )}
+                                        </form>
+                                    )}
+                                </>
+                            )}
+                        </div>
+                    </section>
+                </div>
+            </main>
             
             <Footer />
-        </main>
+        </div>
     )
 }
 

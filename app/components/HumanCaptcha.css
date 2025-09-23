@@ -8,6 +8,13 @@
   margin: 20px auto;
 }
 
+.mobile-instructions {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
 .images-container {
   display: flex;
   justify-content: center;
@@ -16,17 +23,30 @@
   flex-wrap: wrap;
 }
 
-.images-container img {
+.captcha-image {
   width: 80px;
   height: 80px;
   cursor: grab;
   border: 2px solid #ccc;
   border-radius: 10px;
-  transition: transform 0.2s;
+  transition: all 0.2s ease;
 }
 
-.images-container img:active {
+.captcha-image:active {
   transform: scale(1.1);
+}
+
+.captcha-image.mobile-touch {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.captcha-image.selected {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  transform: scale(1.05);
 }
 
 .drop-zone {
@@ -42,7 +62,93 @@
   border-radius: 10px;
 }
 
+.mobile-drop-zone {
+  width: 250px;
+  height: 60px;
+  background-color: #007bff;
+  color: white;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 14px;
+}
+
+.mobile-drop-zone:hover {
+  background-color: #0056b3;
+}
+
+.mobile-submit-btn {
+  width: 100%;
+  max-width: 250px;
+  height: 50px;
+  margin: 15px auto;
+  display: block;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-submit-btn.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.mobile-submit-btn.active:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.mobile-submit-btn.disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.reset-btn {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
 .captcha-message {
   margin-top: 10px;
   font-weight: bold;
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+  .captcha-container {
+    padding: 15px 20px;
+    margin: 10px;
+    max-width: 350px;
+  }
+  
+  .captcha-image {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .mobile-submit-btn {
+    max-width: 200px;
+    height: 45px;
+    font-size: 15px;
+  }
 }

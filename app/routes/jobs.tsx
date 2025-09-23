@@ -80,21 +80,22 @@ export default function Jobs() {
     const stats = getJobStats();
 
     return (
-        <main className="bg-[url('/images/bg-main.svg')] bg-cover min-h-screen">
+        <div className="bg-[url('/images/bg-main.svg')] bg-cover min-h-screen flex flex-col">
             <Navbar />
 
-            <section className="main-section">
-                {error && (
-                    <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 max-w-4xl">
-                        <p className="text-red-800">{error}</p>
-                        <button 
-                            onClick={clearError}
-                            className="text-red-600 underline text-sm mt-2"
-                        >
-                            Dismiss
-                        </button>
-                    </div>
-                )}
+            <main className="flex-1">
+                <section className="main-section">
+                    {error && (
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 max-w-4xl">
+                            <p className="text-red-800">{error}</p>
+                            <button 
+                                onClick={clearError}
+                                className="text-red-600 underline text-sm mt-2"
+                            >
+                                Dismiss
+                            </button>
+                        </div>
+                    )}
 
                 {!showForm && (
                     <>
@@ -217,8 +218,9 @@ export default function Jobs() {
                     </div>
                 )}
             </section>
+            </main>
             
             <Footer />
-        </main>
+        </div>
     );
 }
